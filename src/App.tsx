@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import reactLogo from '../assets/react.svg';
+import reactLogo from './assets/react.svg';
 // eslint-disable-next-line import/no-unresolved
 import dummyImg from '../assets/dummy_img.webp';
-import '../App.css';
+import './App.css';
 
 function App() {
   const [count, setCount] = useState<number>(0);
