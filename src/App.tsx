@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import reactLogo from './assets/react.svg';
 // eslint-disable-next-line import/no-unresolved
-import dummyImg from './assets/dummy_img.webp';
 import './App.css';
 
 function App() {
@@ -10,9 +9,9 @@ function App() {
   return (
     <>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
+        {/* <a href="https://vitejs.dev" target="_blank">
           <img src={dummyImg} className="logo" alt="Vite logo" />
-        </a>
+        </a> */}
         <a href="https://react.dev" target="_blank">
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
