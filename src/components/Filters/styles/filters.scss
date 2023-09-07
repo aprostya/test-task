@@ -1,0 +1,45 @@
+@import '../../../styles/variables.scss';
+
+.filters-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.filters-list {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  @media (min-width: 600px) {
+    flex-direction: row;
+    margin-bottom: 80px;
+  }
+}
+
+.filters-list__item {
+  width: 100%;
+  @media (min-width: 600px) {
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+  }
+}
+
+.filter-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  @media (min-width: 600px) {
+    margin-right: 100px;
+  }
+}
+
+.filter-button {
+  background-color: $white;
+  height: 80px;
+  width: 100%;
+  border: 1px solid $black;
+  margin-bottom: 20px;
+}
