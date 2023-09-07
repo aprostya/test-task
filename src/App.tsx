@@ -1,5 +1,3 @@
-import { useState } from 'react';
-// eslint-disable-next-line import/no-unresolved
 import './styles/app.scss';
 import { FilterPanel } from './components/Filters/index';
 import { CardsList } from './components/ProductCard/index';

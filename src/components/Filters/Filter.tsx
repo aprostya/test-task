@@ -1,4 +1,3 @@
-import React from 'react';
 import { getWordInRegularCase } from '../../utils/utils';
 
 interface IFilterItem {
