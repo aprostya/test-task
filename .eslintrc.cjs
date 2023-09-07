@@ -21,4 +21,12 @@ module.exports = {
     'quotes': [2, "single", { "avoidEscape": true, "allowTemplateLiterals": true }],
     'indent': ["error", 2]
   },
+  settings: {
+    'import/resolver': {
+      'node': {
+        "extensions": [".js", ".jsx", ".ts", ".tsx", ".d.ts"],
+        "moduleDirectory": ["src", "node_modules"]
+      },
+    }
+  }
 }

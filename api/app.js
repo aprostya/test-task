@@ -9,15 +9,15 @@ app.get('/', (req, res) => {
   res.json(data);
 });
 
-app.get('/filters', (req, res) => {
+app.get('/api/v1/filters', (req, res) => {
   res.json(data.filters);
 });
 
-app.get('/labels', (req, res) => {
+app.get('/api/v1/labels', (req, res) => {
   res.json(data.labels);
 });
 
-app.get('/results', (req, res) => {
+app.get('/api/v1/results', (req, res) => {
   console.log(req.query);
 
   if (!Object.keys(data).length) {
@@ -46,7 +46,7 @@ app.get('/results', (req, res) => {
   res.json(tempRes);
 });
 
-app.listen(3001);
+app.listen(5001);
 
 // helper functions:
 
