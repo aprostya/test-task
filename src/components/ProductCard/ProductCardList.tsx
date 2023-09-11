@@ -1,10 +1,10 @@
-import { Card } from './ProductCard';
+import { ProductCard } from './ProductCard';
 import './styles/cards.scss';
 
-export const CardsList: React.FC = () => {
+export const ProductCardList: React.FC = () => {
   return (
     <article className="card-list">
-      <Card />
+      <ProductCard />
     </article>
   );
 };

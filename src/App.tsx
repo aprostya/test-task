@@ -1,6 +1,6 @@
 import './styles/app.scss';
 import { FilterPanel } from './components/Filters/index';
-import { CardsList } from './components/ProductCard/index';
+import { ProductCardList } from './components/ProductCard/index';
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
         <h1>Product search</h1>
       </section>
       <FilterPanel />
-      <CardsList />
+      <ProductCardList />
     </div>
   );
 }

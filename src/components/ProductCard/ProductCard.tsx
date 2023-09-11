@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Card: React.FC = () => {
+export const ProductCard: React.FC = () => {
   return (
     <section className="cards-list">
       <article className="card-list-item">
