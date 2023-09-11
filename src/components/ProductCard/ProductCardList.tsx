@@ -1,4 +1,4 @@
-import { Card } from './Card';
+import { Card } from './ProductCard';
 import './styles/cards.scss';
 
 export const CardsList: React.FC = () => {
