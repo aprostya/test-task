@@ -13,9 +13,9 @@ export const ProductCard = ({
         <a href="a" className="card-list-item__img-container">
           <img src={image?.src} alt={image?.alt} />
         </a>
-        <div className="card-list-item__text-block">
+        <div className="card-list-item-text">
           <h3>{title}</h3>
-          <p>{description}</p>
+          <p className="card-list-item-text__descr">{description}</p>
           <p>${price}</p>
         </div>
       </article>
