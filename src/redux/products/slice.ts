@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { IProductItem } from '../types/card';
-import { API_ROUTES } from '../../../utils/enums';
+import { IProductItem } from './types';
+import { API_ROUTES } from '../../utils/enums';
 
 type ICardsList = { cardList: Array<IProductItem> };
 
@@ -9,23 +9,23 @@ const initialState: ICardsList = {
   cardList: [],
 };
 
-export const fetchFilterData = createAsyncThunk(
+export const fetchCardData = createAsyncThunk(
   'filters/fetchCardData',
   async () => {
-    const response = await axios.get(API_ROUTES.FILTERS);
+    const response = await axios.get(API_ROUTES.CARDS);
     return response.data;
   },
 );
 
-const filterSlice = createSlice({
+const cardSlice = createSlice({
   name: 'cards',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchFilterData.fulfilled, (state, action) => {
+    builder.addCase(fetchCardData.fulfilled, (state, action) => {
       state.cardList = action.payload;
     });
   },
 });
 
-export default filterSlice.reducer;
+export default cardSlice.reducer;

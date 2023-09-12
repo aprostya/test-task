@@ -1,0 +1,65 @@
+@import '../../../styles/variables.scss';
+
+.cards {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-list {
+  width: 100%;
+  height: 100%;
+  padding-bottom: 10px;
+  border-bottom: 1px solid $black;
+  @media (min-width: 770px) {
+    border-bottom: none;
+  }
+}
+
+.card-list-item {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0 20px 0;
+  border-bottom: 1px solid $black;
+  cursor: pointer;
+  &:hover,
+  &:focus {
+    opacity: 0.5;
+  }
+  @media (min-width: 770px) {
+    flex-direction: row;
+  }
+
+  &__img-container {
+    display: block;
+    position: relative;
+    flex-shrink: 0;
+    @media (min-width: 770px) {
+      width: 150px;
+      height: 150px;
+      overflow: hidden;
+      margin-right: 20px;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      object-position: bottom;
+      @media (min-width: 770px) {
+        height: 100%;
+        transition: transform 0.3s ease;
+      }
+    }
+  }
+}
+
+.card-list-item-info {
+  &__title {
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  &__text {
+    margin-bottom: 20px;
+  }
+}

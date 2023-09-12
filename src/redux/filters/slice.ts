@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { IFilter } from '../types/filter';
-import { API_ROUTES } from '../../../utils/enums';
+import type {PayloadAction} from '@reduxjs/toolkit'
+import { IFilter } from './types';
+import { API_ROUTES } from '../../utils/enums';
 
 type IFilterList = { list: Array<IFilter>; selectedFilter: string };
 
@@ -22,14 +23,17 @@ const filterSlice = createSlice({
   name: 'filters',
   initialState,
   reducers: {
-    changeSelectedFilter: (state, action) => {
+    changeSelectedFilter: (state, action: PayloadAction<string>) => {
       state.selectedFilter = action.payload;
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchFilterData.fulfilled, (state, action) => {
-      state.list = action.payload;
-    });
+    builder.addCase(
+      fetchFilterData.fulfilled,
+      (state, action: PayloadAction<Array<IFilter>>) => {
+        state.list = action.payload;
+      },
+    );
   },
 });
 

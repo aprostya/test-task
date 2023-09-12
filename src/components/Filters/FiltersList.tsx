@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { AppDispatch } from '../../types/type';
-import { fetchFilterData } from './slices/filterSlice';
+import { fetchFilterData } from '../../redux/filters/slice';
 import { Filter } from './Filter';
-import { RootState } from '../../store/store';
+import { RootState } from '../../redux/store/store';
 import './styles/filters.scss';
 
-export const FilterPanel: React.FC = () => {
+export const FiltersList: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { list } = useSelector((state: RootState) => state.filters);
 
