@@ -16,7 +16,11 @@ export const FiltersList: React.FC = () => {
   return (
     <section className="filters-list">
       {list?.map((item) => (
-        <Filter filters={item.filters} name={item.groupCategory} />
+        <Filter
+          key={item.groupCategory}
+          filters={item.filters}
+          name={item.groupCategory}
+        />
       ))}
     </section>
   );

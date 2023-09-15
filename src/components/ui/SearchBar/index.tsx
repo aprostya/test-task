@@ -8,8 +8,9 @@ export const SearchBar: React.FC = () => {
   const dispatch = useDispatch();
   const [value, setInputValue] = useState<string>('');
   const handleChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
-    dispatch(changeSearchValue(event.target.value));
+    const value = event.target.value.replace(/^\s+/, '').replace(/\s+/g, ' ');
+    setInputValue(value);
+    dispatch(changeSearchValue(value));
   };
 
   return (

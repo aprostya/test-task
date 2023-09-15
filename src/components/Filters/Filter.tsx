@@ -1,4 +1,5 @@
 import { getWordInRegularCase } from '../../utils/utils';
+import { nanoid } from 'nanoid';
 
 interface IFilterItem {
   name: string;
@@ -13,7 +14,7 @@ export const Filter = (props: IFilterItem) => {
       <h2 className="filter-container__title">{getWordInRegularCase(name)}</h2>
       <ul className="filters-list">
         {filters?.map((filter) => (
-          <li className="filters-list__item" key={filter}>
+          <li className="filters-list__item" key={nanoid()}>
             <button className="pure-button pure-button-secondary filter-button">
               {getWordInRegularCase(filter)}
             </button>
