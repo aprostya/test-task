@@ -1,4 +1,3 @@
-import React from 'react';
 import { IProductItem } from '../../redux/products/types';
 
 export const ProductCard = ({

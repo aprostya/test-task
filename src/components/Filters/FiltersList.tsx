@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { AppDispatch } from '../../types/type';
+import { useSelector } from 'react-redux';
+import { useAppDispatch, RootState } from '../../redux/store/store';
 import { fetchFilterData } from '../../redux/filters/slice';
 import { Filter } from './Filter';
-import { RootState } from '../../redux/store/store';
 import './styles/filters.scss';
 
 export const FiltersList: React.FC = () => {
-  const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useAppDispatch();
   const { list } = useSelector((state: RootState) => state.filters);
 
   useEffect(() => {

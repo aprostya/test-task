@@ -1,19 +1,19 @@
 import React, { useEffect } from 'react';
 import { ProductCard } from './ProductCard';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useAppDispatch, RootState } from '../../redux/store/store';
 import { fetchCardData } from '../../redux/products/slice';
 import { nanoid } from 'nanoid';
-import { RootState } from '../../redux/store/store';
-import { AppDispatch } from '../../types/type';
 import './styles/cards.scss';
 
 export const ProductCardList: React.FC = () => {
-  const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useAppDispatch();
   const { cardList } = useSelector((state: RootState) => state.cards);
+  const { searchValue } = useSelector((state: RootState) => state.filters);
 
   useEffect(() => {
-    dispatch(fetchCardData());
-  }, [dispatch]);
+    dispatch(fetchCardData({ searchValue }));
+  }, [dispatch, searchValue]);
 
   return (
     <article className="card-list">

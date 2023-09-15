@@ -12,13 +12,7 @@ body {
   width: auto;
   height: 100vh;
   background-color: $white;
-  padding: 12px;
-  &__descr {
-    font-size: 14px;
-    @media (min-width: 770px) {
-      font-size: unset;
-    }
-  }
+  padding: 30px;
 }
 
 .sort-container,
