@@ -8,7 +8,7 @@ export const ResultsInfo: React.FC = () => {
 
   return (
     <span className="results-info-container">
-      Showing {cardList?.length ?? 0} results
+      Showing {cardList.length} results
     </span>
   );
 };
