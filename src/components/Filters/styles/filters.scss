@@ -50,4 +50,28 @@
     background-color: $black;
     color: $white;
   }
+  &--green {
+    &:hover {
+      background-color: $green;
+      color: $white;
+    }
+  }
+  &--red {
+    &:hover {
+      background-color: $red;
+      color: $white;
+    }
+  }
+  &--yellow {
+    &:hover {
+      background-color: $yellow;
+      color: $white;
+    }
+  }
+  &--blue {
+    &:hover {
+      background-color: $blue;
+      color: $white;
+    }
+  }
 }

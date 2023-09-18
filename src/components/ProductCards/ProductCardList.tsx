@@ -15,8 +15,7 @@ export const ProductCardList: React.FC = () => {
   );
 
   const sortedCardList = useMemo(() => {
-    const cardCopy = [...cardList];
-    return cardCopy.sort((a, b) => {
+    return [...cardList].sort((a, b) => {
       if (currentSort === SORT_ORDER.ASC) {
         return a.price - b.price;
       }
