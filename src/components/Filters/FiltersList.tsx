@@ -25,3 +25,4 @@ export const FiltersList: React.FC = () => {
     </section>
   );
 };
+
