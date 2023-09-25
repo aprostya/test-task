@@ -29,10 +29,19 @@ const filterSlice = createSlice({
     changeSelectedFilter: (state, action) => {
       state.selectedFilters = state.selectedFilters.map((item) => {
         if (item.groupCategory === action.payload.name) {
-          return {
-            ...item,
-            filters: [...item.filters, action.payload.filter],
-          };
+          const { filter } = action.payload;
+          const filterIndex = item.filters.indexOf(filter);
+          if (filterIndex === -1) {
+            return {
+              ...item,
+              filters: [...item.filters, filter],
+            };
+          } else {
+            return {
+              ...item,
+              filters: item.filters.filter((f) => f !== filter),
+            };
+          }
         }
         return item;
       });

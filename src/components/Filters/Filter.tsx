@@ -17,22 +17,18 @@ export const Filter: React.FC<IFilterItem> = (props) => {
   const { selectedFilters } = useSelector((state: RootState) => state.filters);
   const getBtnClassname = (name: FilterType, filter: string) => {
     const btnClass = 'pure-button pure-button-secondary filter-button';
-    // const isBtnActive = selectedFilters.find(
-    //   (item) => item.groupCategory === name,
-    // );
-    // const btnClass = 'pure-button pure-button-secondary filter-button';
-    // if (isBtnActive) {
-    //   return `${btnClass} filter-button--active`;
-    // }
-    // if (name === FilterType.COLOR && isBtnActive) {
-    //   return `${btnClass} filter-button--${filter}`;
-    // }
-    return btnClass;
+    const isActive = selectedFilters.some(
+      (item) => item.groupCategory === name && item.filters.includes(filter),
+    );
+    if (isActive) {
+      if (name === FilterType.COLOR) {
+        return `${btnClass} filter-button--${filter}`;
+      }
+      return `${btnClass} filter-button--active`;
+    } else {
+      return btnClass; // Default class
+    }
   };
-
-  useEffect(() => {
-    console.log(selectedFilters);
-  }, [selectedFilters]);
 
   return (
     <section className="filter-container">
