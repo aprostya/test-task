@@ -10,4 +10,5 @@ export type IFilters = {
   list: Array<IFilter>;
   searchValue: string;
   currentSort: SORT_ORDER;
+  selectedFilters: Array<IFilter>;
 };

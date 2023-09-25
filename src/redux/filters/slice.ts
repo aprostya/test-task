@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, current } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { IFilter, IFilters } from './types';
 import { API_ROUTES, SORT_ORDER } from '../../utils/enums';
@@ -8,6 +8,7 @@ const initialState: IFilters = {
   list: [],
   searchValue: '',
   currentSort: SORT_ORDER.DEFAULT,
+  selectedFilters: [],
 };
 
 export const fetchFilterData = createAsyncThunk(
@@ -25,6 +26,17 @@ const filterSlice = createSlice({
     changeSearchValue: (state, action: PayloadAction<string>) => {
       state.searchValue = action.payload;
     },
+    changeSelectedFilter: (state, action) => {
+      state.selectedFilters = state.selectedFilters.map((item) => {
+        if (item.groupCategory === action.payload.name) {
+          return {
+            ...item,
+            filters: [...item.filters, action.payload.filter],
+          };
+        }
+        return item;
+      });
+    },
     changeSort: (state, action) => {
       state.currentSort = action.payload;
     },
@@ -34,11 +46,19 @@ const filterSlice = createSlice({
       fetchFilterData.fulfilled,
       (state, action: PayloadAction<Array<IFilter>>) => {
         state.list = action.payload;
+        const selectedFilters = action.payload.map((item) => {
+          return {
+            groupCategory: item.groupCategory,
+            filters: [],
+          };
+        });
+        state.selectedFilters = selectedFilters;
       },
     );
   },
 });
 
-export const { changeSearchValue, changeSort } = filterSlice.actions;
+export const { changeSearchValue, changeSort, changeSelectedFilter } =
+  filterSlice.actions;
 
 export default filterSlice.reducer;

@@ -44,32 +44,56 @@
   background-color: $white;
   height: 80px;
   width: 100%;
-  border: 1px solid $black;
+  border: 2px solid $black;
   margin-bottom: 20px;
-  &:active {
+  font-weight: bold;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: $black;
+    color: $white;
+  }
+  &--active {
     background-color: $black;
     color: $white;
   }
   &--green {
-    &:hover {
+    background-color: $green;
+    color: $white;
+    &:hover,
+    &:active,
+    &:focus {
       background-color: $green;
       color: $white;
     }
   }
   &--red {
-    &:hover {
+    background-color: $red;
+    color: $white;
+    &:hover,
+    &:active,
+    &:focus {
       background-color: $red;
       color: $white;
     }
   }
   &--yellow {
-    &:hover {
+    background-color: $yellow;
+    color: $white;
+    &:hover,
+    &:active,
+    &:focus {
       background-color: $yellow;
       color: $white;
     }
   }
   &--blue {
-    &:hover {
+    background-color: $blue;
+    color: $white;
+    &:hover,
+    &:active,
+    &:focus {
       background-color: $blue;
       color: $white;
     }

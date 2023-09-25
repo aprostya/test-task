@@ -1,6 +1,10 @@
 import { getWordInRegularCase } from '../../utils/utils';
 import { nanoid } from 'nanoid';
+import { RootState, useAppDispatch } from '../../redux/store/store';
+import { changeSelectedFilter } from '../../redux/filters/slice';
 import { FilterType } from './index';
+import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
 
 interface IFilterItem {
   name: FilterType;
@@ -9,13 +13,26 @@ interface IFilterItem {
 
 export const Filter: React.FC<IFilterItem> = (props) => {
   const { name, filters } = props;
+  const dispatch = useAppDispatch();
+  const { selectedFilters } = useSelector((state: RootState) => state.filters);
   const getBtnClassname = (name: FilterType, filter: string) => {
     const btnClass = 'pure-button pure-button-secondary filter-button';
-    if (name === FilterType.COLOR) {
-      return `${btnClass} filter-button--${filter}`;
-    }
+    // const isBtnActive = selectedFilters.find(
+    //   (item) => item.groupCategory === name,
+    // );
+    // const btnClass = 'pure-button pure-button-secondary filter-button';
+    // if (isBtnActive) {
+    //   return `${btnClass} filter-button--active`;
+    // }
+    // if (name === FilterType.COLOR && isBtnActive) {
+    //   return `${btnClass} filter-button--${filter}`;
+    // }
     return btnClass;
   };
+
+  useEffect(() => {
+    console.log(selectedFilters);
+  }, [selectedFilters]);
 
   return (
     <section className="filter-container">
@@ -23,7 +40,10 @@ export const Filter: React.FC<IFilterItem> = (props) => {
       <ul className="filters-list">
         {filters?.map((filter) => (
           <li className="filters-list__item" key={nanoid()}>
-            <button className={getBtnClassname(name, filter)}>
+            <button
+              className={getBtnClassname(name, filter)}
+              onClick={() => dispatch(changeSelectedFilter({ name, filter }))}
+            >
               {getWordInRegularCase(filter)}
             </button>
           </li>

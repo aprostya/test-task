@@ -28,7 +28,7 @@ export const Sort: React.FC = () => {
         }}
       >
         <option key={SORT_ORDER.DEFAULT} value={SORT_ORDER.DEFAULT}>
-          By popularity
+          By popular
         </option>
         <option key={SORT_ORDER.ASC} value={SORT_ORDER.ASC}>
           Price ascending
