@@ -4,7 +4,6 @@ import { RootState, useAppDispatch } from '../../redux/store/store';
 import { changeSelectedFilter } from '../../redux/filters/slice';
 import { FilterType } from './index';
 import { useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
 
 interface IFilterItem {
   name: FilterType;
@@ -17,6 +16,7 @@ export const Filter: React.FC<IFilterItem> = (props) => {
   const { selectedFilters } = useSelector((state: RootState) => state.filters);
   const getBtnClassname = (name: FilterType, filter: string) => {
     const btnClass = 'pure-button pure-button-secondary filter-button';
+    const filterActiveClass = 'filter-button--active';
     const isActive = selectedFilters.some(
       (item) => item.groupCategory === name && item.filters.includes(filter),
     );
@@ -24,9 +24,9 @@ export const Filter: React.FC<IFilterItem> = (props) => {
       if (name === FilterType.COLOR) {
         return `${btnClass} filter-button--${filter}`;
       }
-      return `${btnClass} filter-button--active`;
+      return `${btnClass} ${filterActiveClass}`;
     } else {
-      return btnClass; // Default class
+      return btnClass;
     }
   };
 
