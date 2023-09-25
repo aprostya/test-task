@@ -6,6 +6,7 @@ import { fetchCardData } from '../../redux/products/slice';
 import { nanoid } from 'nanoid';
 import './styles/cards.scss';
 import { SORT_ORDER } from '../../utils/enums';
+import { EmptyResult } from './EmptyResult';
 
 export const ProductCardList: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -26,21 +27,27 @@ export const ProductCardList: React.FC = () => {
     });
   }, [cardList, currentSort]);
 
+  const cardListLength = sortedCardList.length;
+
   useEffect(() => {
     dispatch(fetchCardData({ searchValue, selectedFilters }));
   }, [dispatch, searchValue, selectedFilters]);
 
   return (
     <article className="card-list">
-      {sortedCardList?.map(({ title, description, price, image }) => (
-        <ProductCard
-          key={nanoid()}
-          title={title}
-          description={description}
-          image={image}
-          price={price}
-        />
-      ))}
+      {cardListLength > 0 ? (
+        sortedCardList?.map(({ title, description, price, image }) => (
+          <ProductCard
+            key={nanoid()}
+            title={title}
+            description={description}
+            image={image}
+            price={price}
+          />
+        ))
+      ) : (
+        <EmptyResult />
+      )}
     </article>
   );
 };
