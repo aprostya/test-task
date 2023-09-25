@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { IProductItem } from './types';
 import { API_ROUTES } from '../../utils/enums';
@@ -19,7 +19,7 @@ export const fetchCardData = createAsyncThunk(
     const isFiltersNotEmpty = selectedFilters.some(
       (item) => item.filters.length > 0,
     );
-    let response;
+    let response: AxiosResponse;
     if (isFiltersNotEmpty) {
       response = await axios.get(
         `${
