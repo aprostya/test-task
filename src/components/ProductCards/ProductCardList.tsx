@@ -10,7 +10,7 @@ import { SORT_ORDER } from '../../utils/enums';
 export const ProductCardList: React.FC = () => {
   const dispatch = useAppDispatch();
   const { cardList } = useSelector((state: RootState) => state.cards);
-  const { searchValue, currentSort } = useSelector(
+  const { searchValue, currentSort, selectedFilters } = useSelector(
     (state: RootState) => state.filters,
   );
 
@@ -27,8 +27,8 @@ export const ProductCardList: React.FC = () => {
   }, [cardList, currentSort]);
 
   useEffect(() => {
-    dispatch(fetchCardData({ searchValue }));
-  }, [dispatch, searchValue]);
+    dispatch(fetchCardData({ searchValue, selectedFilters }));
+  }, [dispatch, searchValue, selectedFilters]);
 
   return (
     <article className="card-list">

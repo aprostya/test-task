@@ -1,8 +1,9 @@
 import axios from 'axios';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { IProductItem, IProductSearchParams } from './types';
+import { IProductItem } from './types';
 import { API_ROUTES } from '../../utils/enums';
-import { STATUSES } from '../../types/type';
+import { IProductQueryParams, STATUSES } from '../../types/type';
+import { getSelectedFiltersQueryString } from '../../utils/utils';
 
 type ICardsList = { cardList: Array<IProductItem>; status: STATUSES };
 
@@ -13,11 +14,23 @@ const initialState: ICardsList = {
 
 export const fetchCardData = createAsyncThunk(
   'filters/fetchCardData',
-  async (params: IProductSearchParams) => {
-    const { searchValue } = params;
-    const response = await axios.get(
-      `${API_ROUTES.CARDS}?search=${searchValue}`,
+  async (params: IProductQueryParams) => {
+    const { searchValue, selectedFilters } = params;
+    const isFiltersNotEmpty = selectedFilters.some(
+      (item) => item.filters.length > 0,
     );
+    let response;
+    if (isFiltersNotEmpty) {
+      response = await axios.get(
+        `${
+          API_ROUTES.CARDS
+        }?search=${searchValue}&${getSelectedFiltersQueryString(
+          selectedFilters,
+        )}`,
+      );
+    } else {
+      response = await axios.get(`${API_ROUTES.CARDS}?search=${searchValue}`);
+    }
     return response.data;
   },
 );

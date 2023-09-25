@@ -12,7 +12,3 @@ export interface IProductItem {
   size?: string;
   type?: string;
 }
-
-export interface IProductSearchParams {
-  searchValue: string;
-}
