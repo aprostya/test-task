@@ -9,18 +9,19 @@
   display: flex;
   width: 100%;
   flex-direction: column;
+  flex-wrap: wrap;
   list-style: none;
   padding: 0;
   margin: 0;
-  @media (min-width: 600px) {
+  @media (min-width: 770px) {
     flex-direction: row;
-    margin-bottom: 80px;
+    margin-bottom: 20px;
   }
 }
 
 .filters-list__item {
   width: 100%;
-  @media (min-width: 600px) {
+  @media (min-width: 770px) {
     width: 100px;
     height: 100px;
     margin-right: 20px;
@@ -31,8 +32,11 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  @media (min-width: 600px) {
-    margin-right: 100px;
+  max-width: 100%;
+  @media (min-width: 770px) {
+    width: auto;
+    flex-basis: 50%;
+    flex-grow: 1;
   }
 }
 
@@ -40,6 +44,58 @@
   background-color: $white;
   height: 80px;
   width: 100%;
-  border: 1px solid $black;
+  border: 2px solid $black;
   margin-bottom: 20px;
+  font-weight: bold;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: $black;
+    color: $white;
+  }
+  &--active {
+    background-color: $black;
+    color: $white;
+  }
+  &--green {
+    background-color: $green;
+    color: $white;
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: $green;
+      color: $white;
+    }
+  }
+  &--red {
+    background-color: $red;
+    color: $white;
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: $red;
+      color: $white;
+    }
+  }
+  &--yellow {
+    background-color: $yellow;
+    color: $white;
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: $yellow;
+      color: $white;
+    }
+  }
+  &--blue {
+    background-color: $blue;
+    color: $white;
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: $blue;
+      color: $white;
+    }
+  }
 }

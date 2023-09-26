@@ -1,0 +1,43 @@
+@import '../../../styles/variables.scss';
+
+.input-container {
+  &__title {
+    display: block;
+    font-size: 20px;
+    margin: 0 0 10px 0;
+  }
+}
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-search {
+  display: flex;
+  flex-direction: row;
+  width: auto;
+  height: 2.5rem;
+  border: 1px solid $black;
+  padding: 0 15px;
+  background-color: $white;
+  &__icon {
+    width: 30px;
+    height: 30px;
+    margin-left: auto;
+    align-self: center;
+  }
+}
+
+input {
+  background-color: transparent;
+  border: none;
+  height: 100%;
+  font-size: 1.25rem;
+  width: 100%;
+  margin-left: 5px;
+}
+
+input:focus {
+  outline: none;
+}
