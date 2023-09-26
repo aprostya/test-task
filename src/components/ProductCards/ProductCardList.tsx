@@ -1,10 +1,10 @@
 import React, { useEffect, useMemo } from 'react';
-import { ProductCard } from './ProductCard';
+import './styles/cards.scss';
+import { ProductCard } from './ProductCard/ProductCard';
 import { useSelector } from 'react-redux';
 import { useAppDispatch, RootState } from '../../redux/store/store';
 import { fetchCardData } from '../../redux/products/slice';
 import { nanoid } from 'nanoid';
-import './styles/cards.scss';
 import { SORT_ORDER } from '../../utils/enums';
 import { EmptyResult } from './EmptyResult';
 

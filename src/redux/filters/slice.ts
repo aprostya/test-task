@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { createSlice, createAsyncThunk, current } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { IFilter, IFilters } from './types';
 import { API_ROUTES, SORT_ORDER } from '../../utils/enums';

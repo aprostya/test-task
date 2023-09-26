@@ -1,23 +1,18 @@
 import './styles/app.scss';
-import { FiltersList } from './components/Filters/index';
-import { ProductCardList } from './components/ProductCards/index';
-import { ResultsInfo } from './components/ResultsInfo/index';
-import { Sort } from './components/Sort/index';
-import { ProductSearch } from './components/ProductSearch';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { ProductCardDetail } from './pages/ProductCardDetail';
+import { Main } from './pages/Main';
 
 function App() {
   return (
-    <div className="wrapper">
-      <ProductSearch />
-      <FiltersList />
-      <div className="sort-container">
-        <div className="sort-wrapper">
-          <ResultsInfo />
-          <Sort />
-        </div>
+    <BrowserRouter>
+      <div className="wrapper">
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/product/:title" element={<ProductCardDetail />} />
+        </Routes>
       </div>
-      <ProductCardList />
-    </div>
+    </BrowserRouter>
   );
 }
 

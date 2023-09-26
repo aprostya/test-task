@@ -11,7 +11,7 @@ const svgrPlugin = svgr({
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), svgrPlugin],
-  base: '/test-task/',
+  base: '/',
   server: {
     port: 3001,
     proxy: {

@@ -1,9 +1,9 @@
+import { useSelector } from 'react-redux';
 import { getWordInRegularCase } from '../../utils/utils';
 import { nanoid } from 'nanoid';
 import { RootState, useAppDispatch } from '../../redux/store/store';
 import { changeSelectedFilter } from '../../redux/filters/slice';
 import { FilterType } from './index';
-import { useSelector } from 'react-redux';
 
 interface IFilterItem {
   name: FilterType;

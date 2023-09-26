@@ -4,11 +4,13 @@ import { RootState } from '../../redux/store/store';
 import './styles/results.scss';
 
 export const ResultsInfo: React.FC = () => {
-  const { cardList } = useSelector((state: RootState) => state.cards);
+  const cardListLength = useSelector(
+    (state: RootState) => state.cards.cardList.length,
+  );
 
   return (
     <span className="results-info-container">
-      Showing {cardList.length} results
+      Showing {cardListLength} results
     </span>
   );
 };

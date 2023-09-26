@@ -11,4 +11,5 @@ export interface IProductItem {
   color?: string;
   size?: string;
   type?: string;
+  key?: string
 }
