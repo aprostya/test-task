@@ -8,7 +8,7 @@ module.exports = {
     'plugin:import/recommended',
     'plugin:jsx-a11y/recommended',
     'eslint-config-prettier',
-    'prettier'
+    'prettier',
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
@@ -18,15 +18,15 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
-    'quotes': [2, "single", { "avoidEscape": true, "allowTemplateLiterals": true }],
-    'indent': ["error", 2]
+    quotes: [2, 'single', { avoidEscape: true, allowTemplateLiterals: true }],
+    indent: ['error', 2],
   },
   settings: {
     'import/resolver': {
-      'node': {
-        "extensions": [".js", ".jsx", ".ts", ".tsx", ".d.ts"],
-        "moduleDirectory": ["src", "node_modules"]
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.d.ts'],
+        moduleDirectory: ['src', 'node_modules'],
       },
-    }
-  }
-}
+    },
+  },
+};

@@ -2,13 +2,15 @@ import axios from 'axios';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { IFilter, IFilters } from './types';
+import { STATUSES } from '../../types/type';
 import { API_ROUTES, SORT_ORDER } from '../../utils/enums';
 
-const initialState: IFilters = {
+const initialState: IFilters & { status: STATUSES } = {
   list: [],
   searchValue: '',
   currentSort: SORT_ORDER.DEFAULT,
   selectedFilters: [],
+  status: STATUSES.LOADING,
 };
 
 export const fetchFilterData = createAsyncThunk(
@@ -51,10 +53,15 @@ const filterSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    builder.addCase(fetchFilterData.pending, (state) => {
+      state.status = STATUSES.LOADING;
+      state.list = [];
+    });
     builder.addCase(
       fetchFilterData.fulfilled,
       (state, action: PayloadAction<Array<IFilter>>) => {
         state.list = action.payload;
+        state.status = STATUSES.SUCCESS;
         const selectedFilters = action.payload.map((item) => {
           return {
             groupCategory: item.groupCategory,
@@ -64,6 +71,10 @@ const filterSlice = createSlice({
         state.selectedFilters = selectedFilters;
       },
     );
+    builder.addCase(fetchFilterData.rejected, (state) => {
+      state.status = STATUSES.ERROR;
+      state.list = [];
+    });
   },
 });
 

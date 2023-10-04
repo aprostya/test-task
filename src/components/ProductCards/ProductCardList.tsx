@@ -1,6 +1,8 @@
 import React, { useEffect, useMemo } from 'react';
 import './styles/cards.scss';
 import { ProductCard } from './ProductCard/ProductCard';
+import { SkeletonMock } from '../ui/ContentLoader';
+import { STATUSES } from '../../types/type';
 import { useSelector } from 'react-redux';
 import { useAppDispatch, RootState } from '../../redux/store/store';
 import { fetchCardData } from '../../redux/products/slice';
@@ -10,7 +12,7 @@ import { EmptyResult } from './EmptyResult';
 
 export const ProductCardList: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { cardList } = useSelector((state: RootState) => state.cards);
+  const { cardList, status } = useSelector((state: RootState) => state.cards);
   const { searchValue, currentSort, selectedFilters } = useSelector(
     (state: RootState) => state.filters,
   );
@@ -33,10 +35,15 @@ export const ProductCardList: React.FC = () => {
     dispatch(fetchCardData({ searchValue, selectedFilters }));
   }, [dispatch, searchValue, selectedFilters]);
 
-  return (
-    <article className="card-list">
-      {cardListLength > 0 ? (
-        sortedCardList?.map(({ title, description, price, image }) => (
+  const getCardListComponent = () => {
+    switch (status) {
+    case STATUSES.ERROR:
+      return <div>Content loading error, please try again later</div>;
+    case STATUSES.SUCCESS:
+      if (cardListLength === 0) {
+        return <EmptyResult />;
+      } else {
+        return sortedCardList?.map(({ title, description, price, image }) => (
           <ProductCard
             key={nanoid()}
             title={title}
@@ -44,10 +51,13 @@ export const ProductCardList: React.FC = () => {
             image={image}
             price={price}
           />
-        ))
-      ) : (
-        <EmptyResult />
-      )}
-    </article>
-  );
+        ));
+      }
+
+    default:
+      return <SkeletonMock />;
+    }
+  };
+
+  return <article className="card-list">{getCardListComponent()}</article>;
 };
