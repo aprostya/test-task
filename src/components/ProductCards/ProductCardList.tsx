@@ -31,10 +31,6 @@ export const ProductCardList: React.FC = () => {
 
   const cardListLength = sortedCardList.length;
 
-  useEffect(() => {
-    dispatch(fetchCardData({ searchValue, selectedFilters }));
-  }, [dispatch, searchValue, selectedFilters]);
-
   const getCardListComponent = () => {
     switch (status) {
     case STATUSES.ERROR:
@@ -58,6 +54,10 @@ export const ProductCardList: React.FC = () => {
       return <SkeletonMock />;
     }
   };
+
+  useEffect(() => {
+    dispatch(fetchCardData({ searchValue, selectedFilters }));
+  }, [dispatch, searchValue, selectedFilters]);
 
   return <article className="card-list">{getCardListComponent()}</article>;
 };
