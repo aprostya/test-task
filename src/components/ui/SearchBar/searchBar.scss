@@ -1,10 +1,8 @@
-@import '../../../styles/variables.scss';
-
 .input-container {
   &__title {
     display: block;
-    font-size: 20px;
-    margin: 0 0 10px 0;
+    font-size: 2rem;
+    margin: 0 0 1rem 0;
   }
 }
 
@@ -16,14 +14,15 @@
 .input-search {
   display: flex;
   flex-direction: row;
+  font-size: 1.4rem;
   width: auto;
-  height: 2.5rem;
+  height: 3.5rem;
   border: 1px solid $black;
   padding: 0 15px;
   background-color: $white;
   &__icon {
-    width: 30px;
-    height: 30px;
+    width: 3rem;
+    height: 3rem;
     margin-left: auto;
     align-self: center;
   }
@@ -35,7 +34,7 @@ input {
   height: 100%;
   font-size: 1.25rem;
   width: 100%;
-  margin-left: 5px;
+  margin-left: 1.5rem;
 }
 
 input:focus {

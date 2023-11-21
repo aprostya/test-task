@@ -1,7 +1,7 @@
 import './styles/app.scss';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { ProductCardDetail } from './pages/ProductCardDetail';
-import { Main } from './pages/Main';
+import { ProductCardDetail } from '../pages/ProductCardDetail';
+import { Main } from '../pages/Main';
 
 function App() {
   return (

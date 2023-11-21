@@ -3,6 +3,7 @@ import { getWordInRegularCase } from '../../utils/utils';
 import { nanoid } from 'nanoid';
 import { RootState, useAppDispatch } from '../../redux/store/store';
 import { changeSelectedFilter } from '../../redux/filters/slice';
+import classNames from 'classnames';
 import { FilterType } from './index';
 
 interface IFilterItem {
@@ -16,18 +17,14 @@ export const Filter: React.FC<IFilterItem> = (props) => {
   const { selectedFilters } = useSelector((state: RootState) => state.filters);
   const getBtnClassname = (name: FilterType, filter: string) => {
     const btnClass = 'pure-button pure-button-secondary filter-button';
-    const filterActiveClass = 'filter-button--active';
     const isActive = selectedFilters.some(
       (item) => item.groupCategory === name && item.filters.includes(filter),
     );
-    if (isActive) {
-      if (name === FilterType.COLOR) {
-        return `${btnClass} filter-button--${filter}`;
-      }
-      return `${btnClass} ${filterActiveClass}`;
-    } else {
-      return btnClass;
-    }
+    return classNames(btnClass, {
+      [`filter-button--${filter}`]: isActive && name === FilterType.COLOR,
+      ['filter-button--active']: isActive,
+      [btnClass]: isActive,
+    });
   };
 
   return (
