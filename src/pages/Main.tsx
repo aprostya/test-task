@@ -1,8 +1,8 @@
-import { FiltersList } from '../components/Filters';
-import { ProductCardList } from '../components/ProductCards/index';
-import { ResultsInfo } from '../components/ResultsInfo/index';
-import { Sort } from '../components/Sort/index';
-import { ProductSearch } from '../components/ProductSearch';
+import { FiltersList } from '../features/FilterList/index';
+import { ProductCardList } from '../features/ProductList/index';
+import { ResultsInfo } from '../features/ResultsInfo/ui/ResultsInfo';
+import { Sort } from '../features/Sort/ui/Sort';
+import { ProductSearch } from '../features/ProductSearch';
 
 export const Main: React.FC = () => {
   return (
